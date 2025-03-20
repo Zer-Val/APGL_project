@@ -6,7 +6,7 @@ PRICE=$(echo "$DATA" | grep -oP '<div class="YMlKec fxKbKc">\$[0-9,\.]+' | sed '
 
 if [[ -n "$PRICE" ]]; then
 	NEW_YORK_TIME=$(TZ="America/New_York" date "+%Y-%m-%d %H:%M:%S")
-	echo "$NEW_YORK_TIME;$PRICE" >> ../docs/data.csv
+	echo "$NEW_YORK_TIME;$PRICE" >> /home/ubuntu/APGL_projet/docs/data.csv
 else
 	echo "ERROR : IMPOSSIBLE TO GATHER DATA FROM GOOGLE FINANCE"
 fi
