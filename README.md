@@ -27,7 +27,7 @@ Having up-to-date info from continuous scraping of a website, displayed on your 
 - That specific information should then be displayed on a dashboard, made with Python using the package Dash
 - A graph should also display the time series (values scrapped along time)
 - The dashboard should be updated every 5 minutes using cron
-- A daily report should also be displayed in the dashboard, updated at 8pm each day, and should provide several coherent metrics (e.g. for a financial series, the report could contain daily volatility, open and close price, evolution, etc.)
+- A daily report should also be displayed in the dashboard, updated at 8pm each day, and should provide several coherent metrics (e.g. for a financial series, the report could contain daily volatility, open and close price, evolution, etc.)
 - Additionnal features are welcome if they add value to the dashboard.
 
 # Specifications
