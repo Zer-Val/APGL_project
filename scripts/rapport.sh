@@ -7,8 +7,9 @@ PRICES=$(awk -F';' 'NR>1 {print $2}' "$INPUT_CSV")
 
 MAX_VALUE=$(echo "$PRICES" | sort -nr | head -n1)
 MIN_VALUE=$(echo "$PRICES" | sort -n | head -n1)
+VOLATILITY=$(cat /home/ubuntu/APGL_projet/docs/volatility.txt)
 OPENING_VALUE=$(awk -F';' '$1 ~ / 09:30/ {print $2; exit}' "$INPUT_CSV")
 CLOSING_VALUE=$(awk -F';' '$1 ~ / 16:00/ {print $2; exit}' "$INPUT_CSV")
 
-echo "$OPENING_VALUE;$MIN_VALUE;$MAX_VALUE;$CLOSING_VALUE" >> "$OUTPUT_CSV"
-echo "rapport fait"
+echo "$OPENING_VALUE;$MIN_VALUE;$MAX_VALUE;$CLOSING_VALUE;$VOLATILITY" >> "$OUTPUT_CSV"
+echo "DAILY REPORT OF THE DAY PRODUCED CORRECTLY"
