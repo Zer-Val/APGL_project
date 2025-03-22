@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Dashboard fot APGL</title>               
+    <style>                                         
+        html, body { height: 100%; display: grid; place-items: center; justify-content: center; align-items: flex-start; }
+        
+        h1 { width: 100%; font-family: Arial, sans-serif; font-size: 50px; color: #000000; text-align: center; }
+
+        p { width: 80vw; font-size: 20px; }
+		
+        #graph-wrapper { width: 90%; display: flex; justify-content: center; align-items: center;}
+
+        #graph-container { width: 100%; height: 100%; display: block; }
+        
+    </style>
+</head>
+<body>
+        <h1>Dashboard Tesla</h1>
+
+        <p>
+           lorem ipsum dolor sit amet, consectetur adipiscing elit.
+           Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+           Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+           Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+        </p>
+    
+    <div id="graph-wrapper">
+        <div id="graph-container">
+        {{ graphHTML | safe }}
+        </div>
+    </div>
+
+</body>
+</html>
