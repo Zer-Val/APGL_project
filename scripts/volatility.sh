@@ -1,20 +1,23 @@
 #!/bin/bash
 
+# DEFINITION OF THE INPUT FILE PATH
 INPUT_CSV="/home/ubuntu/APGL_projet/docs/data.csv"
 
-if [ ! -f "$INPUT_CSV" ]; then
+if [ ! -f "$INPUT_CSV" ]; then # TRIGGERED IF THE FILE DOES NOT EXIST OR IS NOT A REGULAR FILE
 	echo "ERROR: FILE NOT FOUND"
 	exit 1
 fi
 
-PRICES=$(awk -F';' 'NR>1 {print $2}' "$INPUT_CSV")
+PRICES=$(awk -F';' 'NR>1 {print $2}' "$INPUT_CSV") # EXTRACT THE PRICES BUT NOT THE HEADER
 
+# WE CALCULATE THE EMPIRICAL VOLATILITY
 SUM=0
 SUM_SQ=0
 COUNT=0
 
+# WE START BY CALCULING THE EMPIRICAL MEAN
 for PRICE in $PRICES; do
-	SUM=$(echo "$SUM+$PRICE" | bc)
+	SUM=$(echo "$SUM+$PRICE" | bc) # bc ALLOWS TO DO THE COMPUTATION NEEDED
 	COUNT=$((COUNT+1))
 done
 
@@ -23,15 +26,19 @@ if [ "$COUNT" -eq 0 ]; then
 	exit 1
 fi
 
+#FIND THE MEAN OF THE PRICES WITH 5 DECIMALS
 MEAN=$(echo "scale=5; $SUM/$COUNT" | bc)
 
+# WE CAN NOW FIND THE VARIANCE AND THUS THE VOLATILITY
 for PRICE in $PRICES; do
 	DIFF=$(echo "$PRICE - $MEAN" | bc)
 	SQUARE=$(echo "$DIFF * $DIFF" | bc)
 	SUM_SQ=$(echo "$SUM_SQ + $SQUARE" | bc)
 done
 
+# VARIANCE = VOLATILITY ²
 VARIANCE=$(echo "scale=5; $SUM_SQ/$COUNT" | bc)
 VOLATILITY=$(echo "scale=5; sqrt($VARIANCE)" | bc -l)
 
+#OUTPUT THE VOLATILITY IN A TXT FILE FOR THE DAILY REPORT
 echo "$VOLATILITY" > /home/ubuntu/APGL_projet/docs/volatility.txt
