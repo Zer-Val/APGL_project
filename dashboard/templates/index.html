@@ -3,36 +3,312 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>Dashboard fot APGL</title>               
-    <style>                                         
-        html, body { height: 100%; display: grid; place-items: center; justify-content: center; align-items: flex-start; }
+    <title>Dashboard fot APGL</title>               <!-- Title of the page -->
+    <style>                                         /* Style of the page */
+        html, body {
+            height: 100%;                           /* We want the page to take the full height of the screen */
+            margin: 0;                              /* Remove default margin */
+            display: grid;                          /* Use flexbox to center the content */
+            place-items: center;
+            justify-content: center;                /* Center horizonaly */
+            align-items: flex-start;                /* Align the content at the top */
+            flex-direction: column;                 /* Stack the elements vertically */
+            padding: 0;                          /* Add some padding around the content */
+            background-image: url('https://img.freepik.com/premium-vector/abstract-vector-technology-wave-with-motion-glowing-dots-dark-cyberspace-digital-background-connection-big-data-futuristic-wireframe-texture-dynamic-analysis-network-connection_1168175-129.jpg');  /* Remplacer cette URL par l'URL de ton image */
+            background-size: cover;                 /* We want the image to cover the whole screen */
+            min-height: 100vh;
+            overflow-y: auto;
+        }
         
-        h1 { width: 100%; font-family: Arial, sans-serif; font-size: 50px; color: #000000; text-align: center; }
+        /* Style of a H1 title */
+        h1 {
+            margin-top: 20px;
+            width: 100%;                            /* Occupy the whole width available */
+            font-family: Arial, sans-serif;         /* Set the font of the title to Arial */
+            font-size: 45px;                        /* Set the size of the title */
+            color: #ffffff;                         /* Set the color of the title */
+            text-align: center;                     /* Align the title to the left */
+            line-height: 1.2;                       /* Set the spacing between the lines of the title */
+        }
+                                                    
+        /* Style of a H2 title */                 
+        h2 {
+            color: black;                           /* Set the color of the title */
+            margin: 0;                              /* Remove the margin of the title */
+            border-radius: 5px;
+            height: 20px;            
+        }
 
-        p { width: 80vw; font-size: 20px; }
+        h3 {
+            margin-top: 10px;
+            width: 100%;                            /* Occupy the whole width available */
+            font-family: Arial, sans-serif;         /* Set the font of the title to Arial */
+            font-size: 35px;                        /* Set the size of the text */
+            color: #ffffff;                         /* Set the color of the text */
+            text-align: center;                       /* Align the text to the left */
+            line-height: 1.6;                       /* Set the spacing between the lines of the text  */
+        }
+
+        /* Style of a paragraph */
+        p {
+            margin-top: 10px;
+            width: 80%;                            /* Occupy the whole width available */
+            font-family: Arial, sans-serif;         /* Set the font of the title to Arial */
+            font-size: 20px;                        /* Set the size of the text */
+            color: #ffffff;                         /* Set the color of the text */
+            text-align: left;                       /* Align the text to the left */
+            line-height: 1.6;                       /* Set the spacing between the lines of the text  */
+        }
 		
-        #graph-wrapper { width: 90%; display: flex; justify-content: center; align-items: center;}
+        /* Style of a graph placer */
+        #graph-wrapper {
+            width: 90%;                            /* Occupy the whole width available */
+            height: 50vh;                          /* Set the height of the graph to 100% */
+            display: flex;                          /* Use flexbox to center the content */
+            justify-content: center;                /* Center horizonaly */
+            align-items: center;                    /* Align the content at the center */
+            margin: 0 auto;
+        }
 
-        #graph-container { width: 100%; height: 100%; display: block; }
+        /* Style of a graph container */
+        #graph-container {
+            width: 100%;                            /* Occupy the whole width available */
+            height: 100%;                           /* Set the height of the graph to 100% */
+            display: block;
+        }
         
+		/* Regle pour le container H2 + table*/
+		#table-wrapper {
+			width: 45%;
+			margin: 150px auto 0 auto;
+			background: white;
+			border: 5px solid black;
+			border-radius: 10px;
+			
+		}
+
+		/*Regle pour le Texte Analysis of the day*/
+		#table-wrapper h2 {
+			 text-align: center;
+			 font-size: 30px; /* Ajuste la taille si besoin */
+			 font-weight: bold;
+			 margin-top: 10px;
+			 margin-bottom: 10px;/* Ajoute un espace entre le titre et le tableau */
+			 margin-left: 10px;
+			 margin-right: 10px;
+			 padding: 10px; /* */
+			 border: 5px solid black;
+			 border-radius: 15px;
+		}
+
+		/* Regle pour le Tableau */
+        #rapport-table {
+        	max-width: 37vw;
+        	table-layout: fixed;
+        	margin: auto;
+        	border-collapse: collapse;
+        	font-size: 1vw;
+        }
+
+		#rapport-table th, 
+		#rapport-table td {
+		    text-align: center;
+		    vertical-align: middle;
+	        padding: 1vw; /* Ajuste selon le besoin */
+	        height: 30px; /* S'assure que les cellules ont une hauteur suffisante */
+	        border: 5px solid black;
+		}
+
+        button {
+        	background-color: #0052a3;  /* Couleur de fond bleue */
+        	color: white;               /* Couleur du texte en blanc */
+        	border: 3px solid #FFFFFF;  /* Bordure blanche de 3px d'épaisseur */
+        	padding: 10px 20px;         /* Espacement intérieur */
+        	text-align: center;         /* Centre le texte */
+        	text-decoration: none;      /* Supprime la décoration du texte */
+        	display: inline-block;      /* Permet au bouton de se comporter comme un bloc en ligne */
+        	font-size: 16px;            /* Taille du texte */
+        	cursor: pointer;           /* Change le curseur pour indiquer que c'est cliquable */
+        	border-radius: 5px;         /* Arrondir les coins */
+        	font-weight: bold;          /* Rendre le texte en gras */
+        }
+
+	    /* Optionnel : Changer la couleur du bouton au survol */
+        button:hover {
+	   	    background-color: #45a049;  /* Couleur de fond légèrement plus foncée quand on survole */
+        }
     </style>
 </head>
 <body>
-        <h1>Dashboard Tesla</h1>
+        <!-- Afficher le titre -->
+        <h1>Final project in APGL -  Dashboard of Tesla's stock price</h1>
 
+        <!-- Afficher la description -->
         <p>
-           lorem ipsum dolor sit amet, consectetur adipiscing elit.
-           Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-           Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-           Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+            This dashboard is the final project for the Advanced Python, Git, Linux for Bloomberg course of ESILV, Year 4.
+            The goal was to do a dashboard that runs on a web hosted server. It runs on Linux, and scrapes data from the website
+            <a href="https://www.google.com/finance/quote/TSLA:NASDAQ" target="_blank">Google Finance</a> and get the stock value of Tesla.
+            The scraper runs every 5 minutes and a graph is displayed with the values. Furthermore, every day at 8pm (UTC-4), a report is 
+            produced to analyse the data of the day and displayed on a table beneath.
         </p>
-    
+        <a href="/history">
+        	<button style= "padding 10px 20px; font-size: 16px; cursor: pointer;">Data History</button>
+        </a>
+        
+       <h3> How well does Tesla do ?</h3>
+    <!-- Conteneur avec fond dégradé -->
     <div id="graph-wrapper">
         <div id="graph-container">
         {{ graphHTML | safe }}
         </div>
     </div>
 
+    <!-- Tableau vide qui sera rempli avec les valeurs du CSV -->
+    <div class="container" id="table-wrapper">
+        <h2>Analysis of the day</h2>
+        <table id="rapport-table">
+            <thead>
+                <tr>
+                    <th>Opening price <br> (09:30 AM)</th>
+                    <th>Lowest price</th>
+                    <th>Highest price</th>
+                    <th>Closing price <br> (04:00 PM)</th>
+                    <th>Volatility</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="opening-value"></td>
+                    <td id="min-value"></td>
+                    <td id="max-value"></td>
+                    <td id="closing-value"></td>
+                    <td id="volatility"></td>
+                </tr>
+            </tbody>
+        </table>
+	</div>
+
+    <!-- JAVASCRIPT CODE TO UPDATE THE GRAPH EVERY 5 MINUTES -->
+    <script>
+    
+        function updateDashboard() {
+            fetch('http://13.53.122.97:5000/get-server-time')
+            	.then(response => response.json())
+            	.then(serverTimeData => {
+            		let serverTime = new Date(serverTimeData.server_time);
+            		let currentHour = serverTime.getHours();
+            		let currentMinute = serverTime.getMinutes();
+
+					let isMarketOpen = (currentHour > 9 || (currentHour === 9 && currentMinute >= 30)) && currentHour < 16;
+					let isMarketClose = currentHour >= 20 || (currentHour < 9 || (currentHour === 9 && currentMinute <= 29));
+            		
+	                fetch('http://13.53.122.97:5000/data')
+                        .then(response => response.json())
+                        .then(data => {
+                        	if (isMarketOpen) {
+								let formattedTime = data.timestamp.map(timestamp => {
+									let date = new Date(timestamp);
+									return date.getHours()*60 + date.getMinutes();
+								});
+
+								let timeLabels = data.timestamp.map(timestamp => {
+									let date = new Date(timestamp);
+									let hours = date.getHours();
+									let minutes = date.getMinutes();
+									return `${hours}:${minutes < 10 ? '0' + minutes : minutes}`;	
+								});
+								
+                                let trace = {
+                        	        x: formattedTime,
+                        	        y: data.values,
+                        	        type: 'scatter',
+                        	        line: { color: 'purple'},
+                        	        hovertemplate: '%{text}<br>Value: $%{y}<extra></extra>',
+                        	        text: timeLabels
+                                };
+                                
+                                let layout = {
+	                                xaxis: {
+	                                	title: '', 
+	                                	tickformat: '%H:%M', 
+	                                	tickfont: { 
+	                                		color: "black", 
+	                                		family: "Arial, sans-serif", 
+	                                		size: 14, 
+	                                		weight: "bold" 
+	                                	}, 
+	                                	color: 'black', 
+	                                	showgrid: true, 
+	                                	range: [570, 960], 
+	                                	tickvals : [570, 600, 630, 660, 690, 720, 750, 780, 810, 840, 870, 900, 930, 960], 
+	                                	ticktext: ['9:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00'] 
+	                                },
+	                                yaxis : {
+	                                	title: '', 
+	                                	tickfont: { 
+	                                		color: "black", 
+	                                		family: "Arial, sans-serif", 
+	                                		size: 14, 
+	                                		weight: "bold"  
+	                                	}, 
+	                                	color: 'black', 
+	                                	showgrid: true, 
+	                                	gridcolor: "black" 
+	                                },
+	                                plot_bgcolor: "rgba(255, 255, 255, 0)", 
+	                                font: {family: "Arial, sans-serif", size: 14},
+	                            }; 
+                                Plotly.react('graph-container', [trace], layout);
+							}
+                        })
+                        .catch(error => console.error('Error fetching data', error));
+
+					if (isMarketClose) {
+						fetch('http://13.53.122.97:5000/rapport_tesla')
+						.then(response => response.json())
+						.then(data => {
+							let tableWrapper = document.getElementById('table-wrapper');
+							let rapportTable = document.getElementById('rapport-table');
+							let tableWrapperH2 = document.querySelector("#table-wrapper h2");
+
+							let allValuesEmpty = [data.opening_value, data.min_value, data.max_value, data.closing_value, data.volatility]
+								.every(value => value === null || value === undefined || value ==="");
+
+							if (allValuesEmpty)	{
+								console.log("No valid data available (CSV contains only headers).");
+								tableWrapper.style.display = 'none';
+								rapportTable.style.display = 'none';
+								if (tableWrapperH2) {
+									tableWrapperH2.style.display = 'none';
+								}
+								return;	
+							}
+
+							document.getElementById('opening-value').textContent = data.opening_value;
+							document.getElementById('min-value').textContent = data.min_value;
+							document.getElementById('max-value').textContent = data.max_value;
+							document.getElementById('closing-value').textContent = data.closing_value;
+							document.getElementById('volatility').textContent = data.volatility;
+
+							tableWrapper.style.display = 'block';
+							rapportTable.style.display = 'block';
+							tableWrapperH2.style.display = 'block';
+						})
+						.catch(error => console.error("Error while gathering of the data:", error));
+					} else {
+						document.getElementById('table-wrapper').style.display = 'none';
+						document.getElementById('rapport-table').style.display = 'none';
+						let tableWrapperH2 = document.querySelector("#table-wrapper h2");
+						if (tableWrapperH2) {
+							tableWrapperH2.style.display = 'none';     
+						}
+					}
+				})
+				.catch(error => console.error('Error fetching server time 2', error));
+		}
+
+		setInterval(updateDashboard, 10000);	
+		window.onload = updateDashboard;
+    </script>
 </body>
 </html>
