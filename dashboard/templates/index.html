@@ -2,169 +2,180 @@
 <html lang="fr"> 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>Dashboard fot APGL</title>               <!-- Title of the page -->
-    <style>                                         /* Style of the page */
-        html, body {
-            height: 100%;                           /* We want the page to take the full height of the screen */
-            margin: 0;                              /* Remove default margin */
-            display: grid;                          /* Use flexbox to center the content */
-            place-items: center;
-            justify-content: center;                /* Center horizonaly */
-            align-items: flex-start;                /* Align the content at the top */
-            flex-direction: column;                 /* Stack the elements vertically */
-            padding: 0;                          /* Add some padding around the content */
-            background-image: url('https://img.freepik.com/premium-vector/abstract-vector-technology-wave-with-motion-glowing-dots-dark-cyberspace-digital-background-connection-big-data-futuristic-wireframe-texture-dynamic-analysis-network-connection_1168175-129.jpg');  /* Remplacer cette URL par l'URL de ton image */
-            background-size: cover;                 /* We want the image to cover the whole screen */
-            min-height: 100vh;
-            overflow-y: auto;
-        }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Title of the page -->  
+    <title>Dashboard fot APGL</title>               
+	<!-- Define the page's styles (black background, white text, flexible layout) -->
+	<style>
+
+		html, body {
+			height: 100%;                     /* We want the page to take the full height of the screen */
+			margin: 0;                        /* Remove default margin to have full control over spacing */
+			display: grid;                    /* Use CSS Grid to layout the page */
+			place-items: center;              /* Centers all content both horizontally and vertically */
+			justify-content: center;          /* Align content horizontally at the center */
+			align-items: flex-start;          /* Align content at the top of the page */
+			flex-direction: column;           /* Stack the elements vertically */
+			padding: 0;                       /* Remove any padding around the content */
+			background-image: url('https://img.freepik.com/premium-vector/abstract-vector-technology-wave-with-motion-glowing-dots-dark-cyberspace-digital-background-connection-big-data-futuristic-wireframe-texture-dynamic-analysis-network-connection_1168175-129.jpg');
+			background-size: cover;           /* Ensure the background image covers the entire screen */
+			min-height: 100vh;                /* Set the minimum height to cover the full viewport height */
+			overflow-y: auto;                 /* Allow vertical scrolling if needed */
+		}
         
-        /* Style of a H1 title */
-        h1 {
-            margin-top: 20px;
-            width: 100%;                            /* Occupy the whole width available */
-            font-family: Arial, sans-serif;         /* Set the font of the title to Arial */
-            font-size: 45px;                        /* Set the size of the title */
-            color: #ffffff;                         /* Set the color of the title */
-            text-align: center;                     /* Align the title to the left */
-            line-height: 1.2;                       /* Set the spacing between the lines of the title */
-        }
+		/* Style of a H1 title */
+		h1 {
+			margin-top: 20px;                 /* Add a 20px margin at the top of the title */
+			width: 100%;                      /* Make the title take up the full width available */
+			font-family: Arial, sans-serif;   /* Set the font family to Arial */
+			font-size: 45px;                  /* Set the size of the title to 45px */
+			color: #ffffff;                   /* Set the color of the title to white */
+			text-align: center;               /* Center-align the title horizontally */
+			line-height: 1.2;                 /* Set the line height (space between lines) to 1.2 */
+		}
                                                     
         /* Style of a H2 title */                 
-        h2 {
-            color: black;                           /* Set the color of the title */
-            margin: 0;                              /* Remove the margin of the title */
-            border-radius: 5px;
-            height: 20px;            
-        }
+		h2 {
+			color: black;                     /* Set the color of the title to black */
+			margin: 0;                        /* Remove the default margin around the title */
+			border-radius: 5px;               /* Add rounded corners with a 5px radius */
+			height: 20px;                     /* Set the height of the title to 20px */
+		}
 
-        h3 {
-            margin-top: 10px;
-            width: 100%;                            /* Occupy the whole width available */
-            font-family: Arial, sans-serif;         /* Set the font of the title to Arial */
-            font-size: 35px;                        /* Set the size of the text */
-            color: #ffffff;                         /* Set the color of the text */
-            text-align: center;                       /* Align the text to the left */
-            line-height: 1.6;                       /* Set the spacing between the lines of the text  */
-        }
+        /* Style of a H3 title */                 
+		h3 {
+			margin-top: 10px;                 /* Add a 10px margin at the top of the title */
+			width: 100%;                      /* Make the title take up the full width available */
+			font-family: Arial, sans-serif;   /* Set the font family to Arial */
+			font-size: 35px;                  /* Set the size of the text to 35px */
+			color: #ffffff;                   /* Set the color of the text to white */
+			text-align: center;               /* Center-align the text horizontally */
+			line-height: 1.6;                 /* Set the line height (spacing between lines) to 1.6 */
+		}
 
         /* Style of a paragraph */
-        p {
-            margin-top: 10px;
-            width: 80%;                            /* Occupy the whole width available */
-            font-family: Arial, sans-serif;         /* Set the font of the title to Arial */
-            font-size: 20px;                        /* Set the size of the text */
-            color: #ffffff;                         /* Set the color of the text */
-            text-align: left;                       /* Align the text to the left */
-            line-height: 1.6;                       /* Set the spacing between the lines of the text  */
-        }
-		
-        /* Style of a graph placer */
-        #graph-wrapper {
-            width: 90%;                            /* Occupy the whole width available */
-            height: 50vh;                          /* Set the height of the graph to 100% */
-            display: flex;                          /* Use flexbox to center the content */
-            justify-content: center;                /* Center horizonaly */
-            align-items: center;                    /* Align the content at the center */
-            margin: 0 auto;
-        }
+		p {
+			margin-top: 10px;                 /* Add a 10px margin at the top of the paragraph */
+			width: 80%;                       /* Make the paragraph take up 80% of the available width */
+			font-family: Arial, sans-serif;   /* Set the font family to Arial */
+			font-size: 20px;                  /* Set the font size to 20px */
+			color: #ffffff;                   /* Set the text color to white */
+			text-align: left;                 /* Align the text to the left */
+			line-height: 1.6;                 /* Set the line height (spacing between lines) to 1.6 */
+		}
 
-        /* Style of a graph container */
-        #graph-container {
-            width: 100%;                            /* Occupy the whole width available */
-            height: 100%;                           /* Set the height of the graph to 100% */
-            display: block;
-        }
-        
-		/* Regle pour le container H2 + table*/
+		/* Style of a graph placer */
+		#graph-wrapper {
+			width: 90%;                       /* Make the graph container take up 90% of the available width */
+			height: 50vh;                     /* Set the height of the graph container to 50% of the viewport height */
+			display: flex;                    /* Use flexbox layout for centering the content */
+			justify-content: center;          /* Center the content horizontally */
+			align-items: center;              /* Center the content vertically */
+			margin: 0 auto;                   /* Center the container horizontally */
+		}
+
+		/* Style of a graph container */
+		#graph-container {
+			width: 100%;                      /* Make the graph container take up 100% of the width available */
+			height: 100%;                     /* Set the height of the graph container to 100% */
+			display: block;                   /* Use block display to make the container behave like a block element */
+		}
+
+		/* Style of a table wrapper */
 		#table-wrapper {
-			width: 45%;
-			margin: 150px auto 0 auto;
-			background: white;
-			border: 5px solid black;
-			border-radius: 10px;
-			
+			width: 45%;                       /* Set the width of the table wrapper to 45% of the container's width */
+			margin: 150px auto 0 auto;        /* Add 150px margin at the top, auto margin left and right to center it horizontally */
+			background: white;                /* Set the background color of the wrapper to white */
+			border: 5px solid black;          /* Add a solid black border of 5px thickness around the wrapper */
+			border-radius: 10px;              /* Round the corners of the border with a radius of 10px */
 		}
 
-		/*Regle pour le Texte Analysis of the day*/
+		/* Style for the table title (h2 inside #table-wrapper) */
 		#table-wrapper h2 {
-			 text-align: center;
-			 font-size: 30px; /* Ajuste la taille si besoin */
-			 font-weight: bold;
-			 margin-top: 10px;
-			 margin-bottom: 10px;/* Ajoute un espace entre le titre et le tableau */
-			 margin-left: 10px;
-			 margin-right: 10px;
-			 padding: 10px; /* */
-			 border: 5px solid black;
-			 border-radius: 15px;
+			text-align: center;               /* Center the title horizontally */
+			font-size: 30px;                  /* Set the font size to 30px */
+			font-weight: bold;                /* Make the title bold */
+			margin-top: 10px;                 /* Add 10px margin at the top */
+			margin-bottom: 10px;              /* Add 10px margin at the bottom to create space between the title and the table */
+			margin-left: 10px;                /* Add 10px margin on the left */
+			margin-right: 10px;               /* Add 10px margin on the right */
+			padding: 10px;                    /* Add 10px padding inside the title */
+			border: 5px solid black;          /* Add a solid black border of 5px around the title */
+			border-radius: 15px;              /* Round the corners of the title box with a radius of 15px */
 		}
 
-		/* Regle pour le Tableau */
-        #rapport-table {
-        	max-width: 37vw;
-        	table-layout: fixed;
-        	margin: auto;
-        	border-collapse: collapse;
-        	font-size: 1vw;
-        }
+		/* Style for the table inside #table-wrapper */
+		#rapport-table {
+			max-width: 37vw;                  /* Set the maximum width of the table to 37% of the viewport width */
+			table-layout: fixed;              /* Use fixed table layout for better control over column width */
+			margin: auto;                     /* Center the table horizontally */
+			border-collapse: collapse;        /* Collapse table borders so they don't have gaps */
+			font-size: 1vw;                   /* Set the font size of the table's text to 1vw (relative to viewport width) */
+		}
 
+
+		/* Style for table header (th) and table cells (td) */
 		#rapport-table th, 
 		#rapport-table td {
-		    text-align: center;
-		    vertical-align: middle;
-	        padding: 1vw; /* Ajuste selon le besoin */
-	        height: 30px; /* S'assure que les cellules ont une hauteur suffisante */
-	        border: 5px solid black;
+			text-align: center;               /* Center-align the text horizontally */
+			vertical-align: middle;           /* Vertically align the content to the middle */
+			padding: 1vw;                     /* Add padding of 1vw inside each cell */
+			height: 30px;                     /* Set the height of the cells to 30px */
+			border: 5px solid black;          /* Add a 5px solid black border around each cell */
 		}
 
-        button {
-        	background-color: #0052a3;  /* Couleur de fond bleue */
-        	color: white;               /* Couleur du texte en blanc */
-        	border: 3px solid #FFFFFF;  /* Bordure blanche de 3px d'épaisseur */
-        	padding: 10px 20px;         /* Espacement intérieur */
-        	text-align: center;         /* Centre le texte */
-        	text-decoration: none;      /* Supprime la décoration du texte */
-        	display: inline-block;      /* Permet au bouton de se comporter comme un bloc en ligne */
-        	font-size: 16px;            /* Taille du texte */
-        	cursor: pointer;           /* Change le curseur pour indiquer que c'est cliquable */
-        	border-radius: 5px;         /* Arrondir les coins */
-        	font-weight: bold;          /* Rendre le texte en gras */
-        }
+		/* Style for buttons */
+		button {
+			background-color: #0052a3;        /* Set the background color of the button to blue */
+			color: white;                     /* Set the text color to white */
+			border: 3px solid #FFFFFF;        /* Set a 3px white border around the button */
+			padding: 10px 20px;               /* Add padding inside the button */
+			text-align: center;               /* Center-align the text inside the button */
+			text-decoration: none;            /* Remove any text decoration (like underlining) */
+			display: inline-block;            /* Make the button behave like a block while remaining inline */
+			font-size: 16px;                  /* Set the font size of the button text */
+			cursor: pointer;                  /* Change the cursor to a pointer to indicate it's clickable */
+			border-radius: 5px;               /* Round the corners of the button */
+			font-weight: bold;                /* Make the button text bold */
+		}
 
-	    /* Optionnel : Changer la couleur du bouton au survol */
-        button:hover {
-	   	    background-color: #45a049;  /* Couleur de fond légèrement plus foncée quand on survole */
-        }
+		/* Optional: Change the button's background color when hovered */
+		button:hover {
+			background-color: #45a049;        /* Change the background color to a darker green when hovered */
+		}
+
     </style>
 </head>
 <body>
-        <!-- Afficher le titre -->
-        <h1>Final project in APGL -  Dashboard of Tesla's stock price</h1>
+	<!-- Main title -->
+	<h1>Final project in APGL -  Dashboard of Tesla's stock price</h1>
 
-        <!-- Afficher la description -->
-        <p>
-            This dashboard is the final project for the Advanced Python, Git, Linux for Bloomberg course of ESILV, Year 4.
-            The goal was to do a dashboard that runs on a web hosted server. It runs on Linux, and scrapes data from the website
-            <a href="https://www.google.com/finance/quote/TSLA:NASDAQ" target="_blank">Google Finance</a> and get the stock value of Tesla.
-            The scraper runs every 5 minutes and a graph is displayed with the values. Furthermore, every day at 8pm (UTC-4), a report is 
-            produced to analyse the data of the day and displayed on a table beneath.
-        </p>
-        <a href="/history">
-        	<button style= "padding 10px 20px; font-size: 16px; cursor: pointer;">Data History</button>
-        </a>
-        
-       <h3> How well does Tesla do ?</h3>
-    <!-- Conteneur avec fond dégradé -->
-    <div id="graph-wrapper">
+	<!-- Introduction -->
+	<p>
+        This dashboard is the final project for the Advanced Python, Git, Linux for Bloomberg course of ESILV, Year 4.
+        The goal was to do a dashboard that runs on a web hosted server. It runs on Linux, and scrapes data from the website
+        <a href="https://www.google.com/finance/quote/TSLA:NASDAQ" target="_blank">Google Finance</a> and get the stock value of Tesla.
+        The scraper runs every 5 minutes and a graph is displayed with the values. Furthermore, every day at 8pm (UTC-4), a report is 
+        produced to analyse the data of the day and displayed on a table beneath.
+    </p>
+
+	<!-- Button to access the history page -->
+    <a href="/history">
+      	<button style= "padding: 10px 20px; font-size: 16px; cursor: pointer;">Data History</button>
+    </a>
+    
+	<!-- Subtitle -->
+    <h3> How well does Tesla do ?</h3>
+    
+	<!-- Graph container -->
+	<div id="graph-wrapper">
         <div id="graph-container">
         {{ graphHTML | safe }}
         </div>
     </div>
 
-    <!-- Tableau vide qui sera rempli avec les valeurs du CSV -->
-    <div class="container" id="table-wrapper">
+	<!-- Table wrapper -->
+	<div class="container" id="table-wrapper">
         <h2>Analysis of the day</h2>
         <table id="rapport-table">
             <thead>
@@ -200,7 +211,7 @@
             		let currentMinute = serverTime.getMinutes();
 
 					let isMarketOpen = (currentHour > 9 || (currentHour === 9 && currentMinute >= 30)) && currentHour < 16;
-					let isMarketClose = currentHour >= 20 || (currentHour < 9 || (currentHour === 9 && currentMinute <= 29));
+					let isTimeReport = currentHour >= 20 || (currentHour < 9 || (currentHour === 9 && currentMinute <= 29));
             		
 	                fetch('http://13.53.122.97:5000/data')
                         .then(response => response.json())
@@ -263,7 +274,7 @@
                         })
                         .catch(error => console.error('Error fetching data', error));
 
-					if (isMarketClose) {
+					if (isTimeReport) {
 						fetch('http://13.53.122.97:5000/rapport_tesla')
 						.then(response => response.json())
 						.then(data => {
