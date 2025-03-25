@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<!--
+    HTML page displaying the historical stock price key values for Tesla.
+    It contains several charts showing the opening, closing, minimum, and maximum prices,
+    as well as the volatility. A button allows returning to the homepage.
+-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title of the page -->  
+	<title>Historique des Prix</title>
+	<!-- Define the page's styles (black background, white text, flexible layout) -->
+	<style>
+		html, body {
+			background-color: #000000;        /* Set the background color to black */
+			min-height: 100vh;                /* Ensure the page covers the full height of the viewport */
+			width: 100%;                      /* Set the width to 100% of the viewport */
+			overflow-y: auto;                 /* Enable vertical scrolling if content overflows */
+			margin: auto 2vw auto 2vw;        /* Center the page horizontally and add 2% margin on left and right */
+			padding: 0;                       /* Remove any default padding */
+			box-sizing: border-box;           /* Include padding and borders in the element's total width and height */
+			display: flex;                    /* Use flexbox layout to arrange the content */
+			flex-direction: column;           /* Arrange child elements in a column direction */
+			align-items: center;              /* Center-align items horizontally */
+		}
+
+		h1 {
+			margin: 10vh auto 5vh;            /* Add top and bottom margin of 10vh and 5vh, center horizontally */
+			width: fit-content;               /* Adjust the width of the element to fit the content */
+			font-family: Arial, sans-serif;   /* Set the font of the title to Arial */
+			font-size: 4vw;                   /* Set the font size relative to the viewport width (4% of viewport width) */
+			color: #ffffff;                   /* Set the text color to white */
+			text-align: center;               /* Center-align the title horizontally */
+			line-height: 1.2;                 /* Set the line height to 1.2 times the font size */
+			border: 0.3vw solid white;        /* Add a solid white border around the title with a thickness of 0.3vw */
+			border-radius: 2vw;               /* Round the corners of the border with a radius of 2vw */
+			display: inline-block;            /* Make the title behave like an inline element while allowing block styling */
+			padding: 2vh 3vw;                 /* Add padding of 2vh vertically and 3vw horizontally */
+		}
+				
+		h2 {
+			margin-top: 3vw;                  /* Add top margin of 3vw to the heading */
+			width: 100%;                      /* Occupy the whole width available */
+			font-family: Arial, sans-serif;   /* Set the font of the title to Arial */
+			font-size: 3vw;                   /* Set the font size relative to the viewport width (3% of viewport width) */
+			color: #ffffff;                   /* Set the text color to white */
+			text-align: center;               /* Center-align the title horizontally */
+			line-height: 1.2;                 /* Set the line height to 1.2 times the font size */
+			text-decoration: underline;       /* Underline the title */
+		}
+
+		p {
+			margin-top: 1vh;                  /* Add top margin of 1vh to the paragraph */
+			width: 90vw;                      /* Occupy 90% of the viewport width */
+			font-family: Arial, sans-serif;   /* Set the font of the text to Arial */
+			font-size: 1.5vw;                 /* Set the font size relative to the viewport width (1.5% of viewport width) */
+			color: #ffffff;                   /* Set the text color to white */
+			text-align: left;                 /* Align the text to the left */
+			line-height: 1.6;                 /* Set the spacing between the lines of the text */
+		}
+		
+		/* Container for the charts, displayed in a grid with 2 columns when screen size allows */
+		.graph-wrapper {
+			display: grid;                    /* Use grid layout for the container */
+			grid-template-columns: repeat(auto-fit, minmax(40vw, 1fr)); /* Create dynamic columns with a minimum width of 40vw and auto-fit to the available space */
+			grid-gap: 3vw;                    /* Add 3vw spacing between the charts */
+			max-width: 95vw;                  /* Set the maximum width of the container to 95% of the viewport width */
+			margin: 0 auto 10vh auto;         /* Center the container horizontally and add 10vh margin at the bottom */
+			text-align: center;               /* Center-align the text inside the container */
+		}
+
+		graph-wrapper div {
+			display: flex;                    /* Use flexbox layout for individual divs inside the .graph-wrapper */
+			flex-direction: column;           /* Arrange elements vertically within each div */
+			align-items: center;              /* Center-align elements horizontally within each div */
+		}
+
+		/* Container for volatility graphs with specific width and centered layout */
+		.volatility-container {
+			width: 85vw;                              /* Set the width to 85% of the viewport width */
+			margin: 5vh auto;                         /* Add 5vh margin at the top and center horizontally */
+			text-align: center;                       /* Center-align the text inside the container */
+			display: flex;                            /* Use flexbox layout for the container */
+			flex-direction: column;                   /* Arrange elements vertically within the container */
+			align-items: center;                      /* Center-align elements horizontally inside the container */
+		}
+
+		/* Titre H2 ajusté */
+		.volatility-container h2 {
+			font-size: 3.5vw;                         /* Set dynamic font size based on the viewport width */
+			margin-bottom: 2vh;                       /* Add margin at the bottom of the heading */
+			text-align: center;                       /* Center-align the text inside the heading */
+			width: 100%;                              /* Make sure the heading takes the full width */
+		}
+
+		button {
+			background-color: #000000;        /* Set the background color to black */
+			color: white;                     /* Set the text color to white */
+			padding: 10px 20px;               /* Add padding inside the button */
+			text-align: center;               /* Center-align the text inside the button */
+			text-decoration: none;            /* Remove any text decoration (like underline) */
+			display: inline-block;            /* Make the button behave like an inline block */
+			font-size: 16px;                  /* Set the font size of the button text */
+			cursor: pointer;                  /* Change the cursor to pointer when hovering */
+			border-radius: 5px;               /* Round the corners of the button */
+			font-weight: bold;                /* Make the text bold */
+			border: 3px solid #FFFFFF;        /* Add a 3px solid white border around the button */
+			float: right;                     /* Float the button to the right of its container */
+		}
+		
+		/* Optionnel : Changer la couleur du bouton au survol */
+		button:hover {
+			background-color: #FF0000;        /* Change the background color to red when the button is hovered */
+		}
+		
+	</style>
+</head>
+<body>
+	<!-- Main title -->
+    <h1>Data history for Tesla's stock</h1>
+	
+	<!-- Introduction and button to go back to the homepage -->
+	<p>
+	These are the opening, closing, maximum and minimum price histories. <br>You can access it at any time and can go back to the main page with this button : 
+	<a href="/">
+		<button style= "padding: 10px 20px; font-size: 16px; cursor: pointer; color:red;">Home page</button>
+	</a>
+	</p>
+		
+	<div class="graph-wrapper">	
+	    <div>
+	        <h2>Opening Price</h2>
+	        <div class="graph-container">{{ graphs['opening_value'] | safe }}</div>
+	    </div>
+
+	    <div>
+	        <h2>Closing Price</h2>
+	        <div class="graph-container">{{ graphs['closing_value'] | safe }}</div>
+	    </div>
+
+	    <div>
+	        <h2>Lowest Price</h2>
+	        <div class="graph-container">{{ graphs['min_value'] | safe }}</div>
+	    </div>
+
+	    <div>
+	        <h2>Highest Price</h2>
+	        <div class="graph-container">{{ graphs['max_value'] | safe }}</div>
+	    </div>
+	</div>
+    <div class="volatility-container">
+        <h2>Volatility</h2>
+        <div class="graph-container">{{ graphs['volatility'] | safe }}</div>
+    </div>
+</body>
+</html>                                                                                                                                        
