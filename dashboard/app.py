@@ -127,7 +127,7 @@ def get_rapport():
         return  jsonify(rapport_python)
 
 
-@app.route('/get-server-time') # Page not supposed to be accessed by the dashboad users, give access to the server time
+@app.route('/get-server-time') # Page not supposed to be accessed by the dashboad users, give access to the server time for the JS
 def get_server_time():
     server_time = datetime.now().isoformat()
     return jsonify({"server_time": server_time})

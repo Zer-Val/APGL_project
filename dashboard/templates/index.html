@@ -176,7 +176,7 @@
 
 	<!-- Table wrapper -->
 	<div class="container" id="table-wrapper">
-        <h2>Analysis of the day</h2>
+        <h2>Analysis of the previous day of trade</h2>
         <table id="rapport-table">
             <thead>
                 <tr>
@@ -202,7 +202,7 @@
     <!-- JAVASCRIPT CODE TO UPDATE THE GRAPH EVERY 5 MINUTES -->
     <script>
     
-        function updateDashboard() {
+	function updateDashboard() {
             fetch('http://13.53.122.97:5000/get-server-time')
             	.then(response => response.json())
             	.then(serverTimeData => {
@@ -226,7 +226,7 @@
 									let date = new Date(timestamp);
 									let hours = date.getHours();
 									let minutes = date.getMinutes();
-									return `${hours}:${minutes < 10 ? '0' + minutes : minutes}`;	
+									return `${hours}:${minutes < 10 ? '0' + minutes : minutes}`; 
 								});
 								
                                 let trace = {
@@ -274,49 +274,40 @@
                         })
                         .catch(error => console.error('Error fetching data', error));
 
-					if (isTimeReport) {
 						fetch('http://13.53.122.97:5000/rapport_tesla')
-						.then(response => response.json())
-						.then(data => {
-							let tableWrapper = document.getElementById('table-wrapper');
-							let rapportTable = document.getElementById('rapport-table');
-							let tableWrapperH2 = document.querySelector("#table-wrapper h2");
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log(data);
+                            let tableWrapper = document.getElementById('table-wrapper');
+                            let rapportTable = document.getElementById('rapport-table');
+                            let tableWrapperH2 = document.querySelector("#table-wrapper h2");
 
-							let allValuesEmpty = [data.opening_value, data.min_value, data.max_value, data.closing_value, data.volatility]
-								.every(value => value === null || value === undefined || value ==="");
+                            let allValuesEmpty = [data.opening_value, data.min_value, data.max_value, data.closing_value, data.volatility]
+                                .every(value => value === null || value === undefined || value ==="");
 
-							if (allValuesEmpty)	{
-								console.log("No valid data available (CSV contains only headers).");
-								tableWrapper.style.display = 'none';
-								rapportTable.style.display = 'none';
-								if (tableWrapperH2) {
-									tableWrapperH2.style.display = 'none';
-								}
-								return;	
-							}
+                            if (allValuesEmpty) {
+                                console.log("No valid data available (CSV contains only headers).");
+                                tableWrapper.style.display = 'none';
+                                rapportTable.style.display = 'none';
+                                if (tableWrapperH2) {
+                                    tableWrapperH2.style.display = 'none';
+                                }
+                                return;
+                            }
 
-							document.getElementById('opening-value').textContent = data.opening_value;
-							document.getElementById('min-value').textContent = data.min_value;
-							document.getElementById('max-value').textContent = data.max_value;
-							document.getElementById('closing-value').textContent = data.closing_value;
-							document.getElementById('volatility').textContent = data.volatility;
+                            document.getElementById('opening-value').textContent = data.opening_value;
+                            document.getElementById('min-value').textContent = data.min_value;
+                            document.getElementById('max-value').textContent = data.max_value;
+                            document.getElementById('closing-value').textContent = data.closing_value;
+                            document.getElementById('volatility').textContent = data.volatility;
 
-							tableWrapper.style.display = 'block';
-							rapportTable.style.display = 'block';
-							tableWrapperH2.style.display = 'block';
-						})
-						.catch(error => console.error("Error while gathering of the data:", error));
-					} else {
-						document.getElementById('table-wrapper').style.display = 'none';
-						document.getElementById('rapport-table').style.display = 'none';
-						let tableWrapperH2 = document.querySelector("#table-wrapper h2");
-						if (tableWrapperH2) {
-							tableWrapperH2.style.display = 'none';     
-						}
-					}
-				})
-				.catch(error => console.error('Error fetching server time 2', error));
-		}
+                            tableWrapper.style.display = 'block';                                     
+                            rapportTable.style.display = 'block';
+                            tableWrapperH2.style.display = 'block';
+                        })
+                })
+                .catch(error => console.error('Error fetching server time 2', error));
+        }
 
 		setInterval(updateDashboard, 10000);	
 		window.onload = updateDashboard;
