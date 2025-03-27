@@ -33,6 +33,7 @@ if [ -z "$OPENING_VALUE" ] || [ -z "$MIN_VALUE" ] || [ -z "$MAX_VALUE" ] || [ -z
 fi
 
 # PRODUCES THE REPORT OF THE DAY AS A CSV
+echo "opening;min;max;closing;volatility" > "$OUTPUT_CSV1"
 echo "$OPENING_VALUE;$MIN_VALUE;$MAX_VALUE;$CLOSING_VALUE;$VOLATILITY" >> "$OUTPUT_CSV1"
 
 # SAVES THE DAILY REPORT DATA IN A HISTORY CSV
