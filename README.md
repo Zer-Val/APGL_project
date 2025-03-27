@@ -4,7 +4,7 @@ This project is an academic project on the manipulation of Linux commands and th
 
 This project aims to implement a webscrapper that uses bash command grep to take the data in the HTML code of the page. We then have to display it on a dashboard hosted on a Virtual Machine on a web server so that we can acces it at any time.
 
-#-------------------------------------------------------------------------------------------------------------------------#
+##
 
 We realised a few Bash scripts to handle the gathering, processing and cleaning of our files.
 
@@ -18,7 +18,7 @@ This project was a good way for us to learn how to use Linux to automatise tasks
 
 We thank our teacher and PW teacher for their help.
 
-#-------------------------------------------------------------------------------------------------------------------------#
+##
 
 This project is based on the following project assignement :
 
