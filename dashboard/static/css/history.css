@@ -1,0 +1,112 @@
+html, body {
+	height: 100%;                    /* We want the page to take the full height of the screen */
+	width: 100%;                     /* We want the page to take the full width of the screen */
+   margin: auto 2vw auto 2vw;       /* Adds a horizontal margin of 2% of the viewport width */
+	overflow-y: auto;                /* Allow vertical scrolling if needed */
+	background-color: #000000;       /* Set the background to black */
+	padding: 0;                      /* Remove any padding around the content */
+	box-sizing: border-box;          /* Ensures padding and borders are included in the element's width/height */
+	display: flex;                   /* Use CSS Flex to layout the page */
+	flex-direction: column;          /* Aligns element in a vertical column */
+	align-items: center;             /* Aligns content horizontally */
+}
+
+/* Style of a H1 title */
+h1 {
+	margin: 10vh auto 5vh;           /* Adds a top margin of 10 vw, center horizontally, and adds a bottom marging of 5 vw */
+	width: fit-content;              /* Adjust the width to fit the content */
+	font-family: Arial, sans-serif;  /* Set the font of the title to Arial */
+	font-size: 4vw;                  /* Set the size of the title relative to the viewport width */
+	color: #ffffff;                  /* Set the color of the title to white */
+	text-align: center;              /* Center-align the title horizontally */
+	line-height: 1.2;                /* Set the lines height (space between lines) to 1.2*/ 	
+	border: 0.3vw solid white;       /* Adds a white solid border with a thickness of .3 vw */
+	border-radius: 50px;             /* Add rounded corners with a 50 px radius */
+	display: inline-block;           /* Makes the element as wide as its content while allowing block-level styling */
+	padding: 2vh 3vw;                /* Adds padding: 2 vh on top and botoms, 3 vw on left and right */
+}
+
+/* Style of a H2 title */
+h2 {
+	margin-top:3vw;                  /* Adds a top margin of 3 vw */
+	width: 100%;                     /* Occupy the whole width available */
+	font-family: Arial, sans-serif;  /* Set the font of the title to Arial */
+	font-size: 3vw;                  /* Set the size of the title */
+	color: #ffffff;                  /* Set the color of the title to white */
+	text-align: center;              /* Center-align the title horizontally */
+	line-height: 1.2;                /* Set the lines height (space between lines) to 1.2 */     
+	text-decoration: underline;      /* Underlines the text */
+}
+
+/* Style of a paragraph */
+p {
+	margin-top: 1vh;                 /* Adds a top margin of 1 vw */
+	width: 90vw;                     /* Occupy 90% of the available width */
+	font-family: Arial, sans-serif;  /* Set the font of the title to Arial */
+	font-size: 1.5vw;                /* Set the size of the text to 1.5 vw */
+	color: #ffffff;                  /* Set the color of the text to white */
+	text-align: left;                /* Align the text to the left */
+	line-height: 1.6;                /* Set the lines height (space between lines) to 1.6 */
+}
+
+/* Style of a graph-wrapper */
+.graph-wrapper {
+	display: grid;                   /* Use CSS Grid to display the graphs */
+	grid-template-columns: repeat(auto-fit, minmax(40vw, 1fr)); /* Display 2 columns */
+	grid-gap: 3vw; 	                 /* Set the spacing between the graphs */
+	max-width: 95vw;                 /* Set the width to 95 vw */
+	margin: 0 auto 10vh auto;        /* Adds a bottom margin of 10 vh, center horizontally */
+	text-align: center;              /* Center-align the title of horizontally */
+}
+
+graph-wrapper div {
+	display: flex;                  /* Use CSS Flex to display the item */
+	flex-direction: column;         /* Arrange the child element vertically */
+	align-items: center;            /* Center-align the item horizontally */
+}
+
+/* Style of the volatility container */
+.volatility-container {
+	width: 85vw;                    /* Set the width of the container to 85 vw */
+	margin: 5vh auto;               /* Adds top and bottom margin of 5vh and center horizontally */
+	text-align: center;             /* Center-align the text */
+	display: flex;                  /* Use CSS Flex for layout */
+	flex-direction: column;         /* Arrange the element vertically */
+	align-items: center;            /* Center-align the item horizontally */
+}
+
+/* Style of a H2 title in a volatility container */
+.volatility-container h2 {
+	font-size: 3.5vw;               /* Set the size of the text to 3.5vw */
+	margin-bottom: 2vh;             /* Adds a bottom margin of 2 vh */
+	text-align: center;             /* Center-align the text horizontally */
+	width: 100%;                    /* Occupy 100% of the available width */
+}
+
+/* Style of a graph container */
+.graph-container {
+   width: 90%;                    /* Occupy 90% of the available width */
+	height: 45vh;                  /* Occupy 45 vh */
+	display: flex;                 /* Use CSS Flex for layout */
+	justify-content: center;       /* Center the content horizontally */
+}
+
+/* Style of a button */
+button {
+	background-color: #000000;     /* Set the color of the background to black */
+	color: white;                  /* Set the color of the text to white */
+	padding: 10px 20px;            /* Add padding inside the button */
+	text-align: center;            /* Center-align the text inside the button */
+	display: inline-block;         /* Allows the button to behave like a block element */
+	font-size: 16px;               /* Set the size of the font to 16 px */
+	cursor: pointer;               /* Change the cursor to indicate it is clickable */
+	border-radius: 5px;            /* Adds rounded corner with a 5 px radius */
+	font-weight: bold;             /* Set the font to bold */
+	border: 3px solid #FFFFFF;     /* Adds a white solid border with a thickness of 3 px */
+	float: right;                  /* Float the button to the right */
+}
+
+/* Style of a button wgen hovered over */
+button:hover {
+	background-color: #FF0000;     /* Change the background color to red */
+}
