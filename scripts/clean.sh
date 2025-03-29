@@ -1,9 +1,7 @@
 #!/bin/bash
 
-# CLEAN THE FILES
+# CLEANING OF THE FILES USED FOR THE DASHBOARD
 > /home/ubuntu/APGL_projet/docs/data.csv
-> /home/ubuntu/APGL_projet/docs/rapport.csv
-> /home/ubuntu/APGL_projet/docs/volatility.txt
 
-# ADD THE HEADERS FOR THE FILES FOR THE GRAPH
+# WE KEEP THE HEADERS FOR THE CSV FILES
 echo "timestamp;value" > /home/ubuntu/APGL_projet/docs/data.csv
