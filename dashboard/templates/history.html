@@ -8,8 +8,8 @@
 </head>
 <body>
     <h1>Data history for Tesla's stock</h1>
-	<p>
-	These are the opening, closing, maximum and minimum price histories. <br>You can access it at any time and can go back to the main page with this button : 
+	<p>	These are the opening, closing, minimum and maximum price histories and the volatility of the day. <br> 
+		You can access it at any time and can go back to the main page with this button : 
 	<a href="/">
 		<button style= "font-size: 16px; cursor: pointer; color: white;">Home page</button>
 	</a>
@@ -40,5 +40,12 @@
         <h2>Volatility</h2>
         <div class="graph-container">{{ graphs['volatility'] | safe }}</div>
     </div>
+
+	<footer>
+        <p>&copy; 2025 APGL Project - ESILV | Created by Zer-Val & CristianoCLS. |
+            <a href="https://github.com/Zer-Val/APGL_project" target="_blank">Voir sur GitHub</a>
+            | Tesla's stock dashboard - Hosted online
+        </p>
+    </footer>
 </body>
 </html>                                                                                                                                        
