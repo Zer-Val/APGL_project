@@ -1,7 +1,7 @@
 html, body {
 	height: 100%;                    /* We want the page to take the full height of the screen */
 	width: 100%;                     /* We want the page to take the full width of the screen */
-   margin: auto 2vw auto 2vw;       /* Adds a horizontal margin of 2% of the viewport width */
+    margin: auto 2vw auto 2vw;       /* Adds a horizontal margin of 2% of the viewport width */
 	overflow-y: auto;                /* Allow vertical scrolling if needed */
 	background-color: #000000;       /* Set the background to black */
 	padding: 0;                      /* Remove any padding around the content */
@@ -9,6 +9,7 @@ html, body {
 	display: flex;                   /* Use CSS Flex to layout the page */
 	flex-direction: column;          /* Aligns element in a vertical column */
 	align-items: center;             /* Aligns content horizontally */
+	overflow-x: hidden;               /* Prevents horizontal scrolling for a cleaner presentation */
 }
 
 /* Style of a H1 title */
@@ -109,4 +110,29 @@ button {
 /* Style of a button wgen hovered over */
 button:hover {
 	background-color: #FF0000;     /* Change the background color to red */
+}
+
+/* Style for the footer */
+footer {
+	color: #fff;                     /* Set the color of the text to white */
+	text-align: center;                 /* Center-align the text horizontally */
+	padding: 5px;                       /* Add padding inside the footer */
+	font-weight: bold; 			        /* Make the footer text bold */
+	width: 100vw; 			            /* Set the width of the footer to 100% of the viewport width */
+	position: relative; 		        /* Position the footer relative to its normal position */
+	bottom: 0; 		   		            /* Align the footer to the bottom of the page */
+	display: flex; 				 		/* Use flexbox layout for centering the content */
+	justify-content: center;  			/* Center the content horizontally */
+	align-items: center;  			    /* Center the content vertically */      
+	box-sizing: border-box;  		    /* Include padding and border in the element's total width and height */
+}
+
+footer a {
+	color: #ffcc00;   			        /* Set the color of the link to a light yellow */
+	text-decoration: none; 		        /* Remove any text decoration (like underlining) */
+	font-weight: bold; 			        /* Make the link text bold */
+}
+ 
+footer a:hover {
+	text-decoration: underline; 	    /* Underline the link when hovered */
 }

@@ -11,6 +11,7 @@ html, body {
 	background-size: cover;           /* Ensure the background image covers the entire screen */
 	min-height: 100vh;                /* Set the minimum height to cover the full viewport height */
 	overflow-y: auto;                 /* Allow vertical scrolling if needed */
+	overflow-x: hidden;               /* Prevents horizontal scrolling for a cleaner presentation */
 }
 
 /* Style of a H1 title */
@@ -130,5 +131,30 @@ button {
 
 /*Change the button's background color when hovered */
 button:hover {
-	background-color: #45a049;        /* Change the background color to a darker green when hovered */
+	background-color: #45a049;       /* Change the background color to a darker green when hovered */
+}
+
+/* Style for the footer */
+footer {
+	color: #fff;                     /* Set the color of the text to white */
+	text-align: center;                 /* Center-align the text horizontally */
+	padding: 5px;                       /* Add padding inside the footer */
+	font-weight: bold; 			        /* Make the footer text bold */
+	width: 100vw; 			            /* Set the width of the footer to 100% of the viewport width */
+	position: relative; 		        /* Position the footer relative to its normal position */
+	bottom: 0; 		   		            /* Align the footer to the bottom of the page */
+	display: flex; 				 		/* Use flexbox layout for centering the content */
+	justify-content: center;  			/* Center the content horizontally */
+	align-items: center;  			    /* Center the content vertically */      
+	box-sizing: border-box;  		    /* Include padding and border in the element's total width and height */
+}
+
+footer a {
+	color: #ffcc00;   			        /* Set the color of the link to a light yellow */
+	text-decoration: none; 		        /* Remove any text decoration (like underlining) */
+	font-weight: bold; 			        /* Make the link text bold */
+}
+ 
+footer a:hover {
+	text-decoration: underline; 	    /* Underline the link when hovered */
 }
