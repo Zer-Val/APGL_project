@@ -1,6 +1,6 @@
 # Advanced Python, Git, Linux for Bloomberg
 
-This project is an academic project on the manipulation of Linux commands and the manipulation of a Flask app.
+This project is an academic project on the manipulation of Linux commands and the manipulation of a Dash app (in the end, we used a Flask but it can easily be adapted to Dash).
 
 This project aims to implement a webscrapper that uses bash command grep to take the data in the HTML code of the page. We then have to display it on a dashboard hosted on a Virtual Machine on a web server so that we can acces it at any time.
 
